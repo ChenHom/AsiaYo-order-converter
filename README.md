@@ -41,13 +41,12 @@
 
  主要調整會是以對系統影響最小的方式進行，並且會透過壓力測試來確認調整後的效果。
 
-
- ## API 實作測驗
+## API 實作測驗
 
  > 請用 Laravel 實作一個提供訂單格式檢查與轉換的 API
  >
  > ● 此應用程式將有一支 endpoint 為 POST /api/orders 的 API 作為輸入點
- > 
+ >
  > ● 此 API 將以以下固定的 JSON 格式輸入，並請使用 Laravel 的 FormRequest，若未使用 FormRequest 物件，不予給分
  >
  > ● 請按照循序圖實作此 API 的互動類別及其衍生類別。實作之類別需符合物件導向設計
@@ -61,3 +60,16 @@
  > ● 請使用 docker 包裝您的環境。若未使用 docker 或 docker-compose 不予給分
  >
  > ● 實作結果需以 GitHub 呈現。若未使用不予給分
+
+### 使用的 SOLID 與設計模式
+
+專案大致使用了以下 SOLID 原則與設計模式：
+
+- **SOLID**
+  - 單一職責原則：Converter 類別只做金額轉換工作; OrderService 類別只做訂單的商業邏輯工作
+  - 開放封閉原則: Converter 透過策略模式來實現不同幣別的轉換，不需要修改 Converter 類別就能新增幣別轉換
+  - 里氏替換原則: USDConverter 和 TWDConverter 類別的實作都是依照 CurrencyConverter 介面來實作
+  - 介面隔離原則: CurrencyConverterInterface 只定義了專門轉換金額的方法
+
+- **設計模式**
+  - 策略模式: Converter 類別透過 CurrencyConverterInterface 來實現不同幣別的轉換
