@@ -13,11 +13,24 @@ use App\CurrencyConverter\Converts\USDConverter;
  */
 class Converter
 {
+    /**
+     * 將價格轉換成新的幣種的價格
+     *
+     * @param int $price
+     * @param CurrencyEnum $currency
+     * @return int
+     */
     public function exchangePrice(int $price, CurrencyEnum $currency): int
     {
         return $this->getConverter($currency)->exchangePrice($price);
     }
 
+    /**
+     * 取得匯率轉換器
+     *
+     * @param CurrencyEnum $currency
+     * @return CurrencyConverterInterface
+     */
     private function getConverter(CurrencyEnum $currency): CurrencyConverterInterface
     {
         return match ($currency) {

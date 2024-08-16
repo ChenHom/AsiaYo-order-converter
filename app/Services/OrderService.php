@@ -7,6 +7,12 @@ use App\Enums\CurrencyEnum;
 
 class OrderService
 {
+    /**
+     * 轉換訂單資料
+     *
+     * @param OrderConvertDTO $order
+     * @return array
+     */
     public function convertOrder(OrderConvertDTO $order): array
     {
         $this->validateOrder($order);
@@ -23,6 +29,7 @@ class OrderService
     /**
      * 驗證訂單資料
      *
+     * @param OrderConvertDTO $order
      * @throws \Illuminate\Validation\ValidationException
      */
     private function validateOrder(OrderConvertDTO $order): void

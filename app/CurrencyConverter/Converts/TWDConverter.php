@@ -5,6 +5,9 @@ use App\CurrencyConverter\CurrencyConverterInterface;
 
 class TWDConverter implements CurrencyConverterInterface
 {
+    /**
+     * @inheritDoc
+     */
     public function exchangePrice(int $price): int
     {
         $currencyRate = config('currency.TWD.rate');

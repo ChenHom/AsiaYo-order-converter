@@ -3,7 +3,7 @@ namespace App\Enums;
 
 enum CurrencyEnum: string {
     /**
-     * 美完
+     * 美元
      */
     case USD = 'USD';
 
